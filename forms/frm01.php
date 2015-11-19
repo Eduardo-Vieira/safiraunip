@@ -1,3 +1,16 @@
+<?php
+if (!isset($_SESSION)) {
+      session_start();
+      if (!empty($_SESSION['logado']))
+        return header('location: inicio.php');
+      {
+        $_SESSION['logado'] = '0';
+        return header('location: index.php');
+
+      }
+    }
+?>
+
 <form action="controllers/c_form.php" method="post"  id="formq" name="formq">
 
 <input type="hidden" value="24" id="TQ" name="TQ">

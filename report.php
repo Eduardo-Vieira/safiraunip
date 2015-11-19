@@ -22,10 +22,10 @@ $totalalunos = "10";
 $totalperg = '10';
 $potencialidade = '95'; // Descobri oque é potencialidade
 //$perg_descrição = "1. Missão Institucional – Visão – Valores: Sua clareza, objetividade, coerência, adequação entre todos os seus elementos e com a realidade institucional, a factibilidade e a viabilidade do seu cumprimento integral.";
-$pergquant = array('1','2','3','4','6'); //Quantidade de respostas cada questão
+$pergquant = array('2','2','3','4','6'); //Quantidade de respostas cada questão
 $i = '0';  //inteiro pra loop 
-$totalperg = '10';
-$potencialidade = '95'; // Descobri oque é potencialidade
+$totalperg = '11';
+$potencialidade = '0'; // Descobri oque é potencialidade
 $i = '0';  //inteiro pra loop 
 ?>
 
@@ -98,19 +98,12 @@ $i = '0';  //inteiro pra loop
 
 		$row = mysql_fetch_assoc($rst);
 	}
-
-
-
-
-
-
-
 ?>
 
 
 
 
-
+for ()
 <div id="tabelapergunt">
 	<P align="left"> <?php echo ($perg_descarray[0]); ?> </P>
 
@@ -175,136 +168,23 @@ $i = '0';  //inteiro pra loop
 
 <?php $i = '0'; ?>
 
-<div id="tabelapergunt">
-	<P align="left"> <?php echo ($perg_descarray[1]); ?> </P>
 
-	<TABLE BORDER="1" width = "100%">
 
-		<TR> 
-			<TD></TD>
-			<TD>Percentuais</TD>
-			<TD>Quantidade</TD>
-			<TD>Análise</TD>
-		</TR>
 
-		<TR>  
-			<TD align = "left">Bom</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-			<TD rowspan="3"><?php echo($potencialidade);?>%</TD>
-		</TR>
 
-		<?php $i = $i + '1';?>
+<?php
+$rs01 = mysql_query("SELECT * FROM tb_perguntas WHERE perg_form_codid='1' "); 
+while ($row = mysql_fetch_row($rs01)) {
 
-		<TR> 
-			<TD align = "left">Otimo</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Regular</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Ruim</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-			<TD rowspan="3"> POTENCIALIDADE</TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Nãoconheço para opinar</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-		</TR>
-
-			<TR> 
-			<TD align = "left">Total</TD>
-			<TD>100%</TD>
-			<TD><?php echo($totalperg);?></TD>
-		</TR>
-
-	</TABLE>
-	<BR>
- </div>
-
-<?php $i = '0'; ?>
-
-<div id="tabelapergunt">
-	<P align="left"> <?php echo ($perg_descarray[2]); ?> </P>
-
-	<TABLE BORDER="1" width = "100%">
-
-		<TR> 
-			<TD></TD>
-			<TD>Percentuais</TD>
-			<TD>Quantidade</TD>
-			<TD>Análise</TD>
-		</TR>
-
-		<TR>  
-			<TD align = "left">Bom</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-			<TD rowspan="3"><?php echo($potencialidade);?>%</TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Otimo</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Regular</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Ruim</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-			<TD rowspan="3"> POTENCIALIDADE</TD>
-		</TR>
-
-		<?php $i = $i + '1';?>
-
-		<TR> 
-			<TD align = "left">Nãoconheço para opinar</TD>
-			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
-			<TD><?php echo($pergquant[$i]);?></TD>
-		</TR>
-
-			<TR> 
-			<TD align = "left">Total</TD>
-			<TD>100%</TD>
-			<TD><?php echo($totalperg);?></TD>
-		</TR>
-
-	</TABLE>
-	<BR>
- </div>
+	echo $row[0].'  '.$row[1].'  '.$row[2].'<br>';
+	
+}
 
 
 
 
 
+?>
 
 
 

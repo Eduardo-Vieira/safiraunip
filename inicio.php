@@ -1,8 +1,24 @@
+<?php
+if (!isset($_SESSION)) {
+      session_start();
+      if (!empty($_SESSION['logado']))
+      	return header('location: inicio.php');
+      {
+        $_SESSION['logado'] = '0';
+        return header('location: index.php');
+
+      }
+    }
+?>
+
 <div class="page-header">
     <h2>Seja bem vindo, <?php echo strtoupper($_SESSION['nome']);?>.</h2>
 </div>
 <!-- linha 01 -->
 <div class="row">
+	<?php
+		
+	?>
 	 <!-- Coluna 01 -->
   <div class="col-sm-6 col-md-4">
 	  <div class="panel panel-primary" style="height: 220px;">
@@ -19,7 +35,9 @@
 
 	</div>
   </div>
-
+  <?php
+		
+  ?>
   <!-- Coluna 02 -->
   <div class="col-sm-6 col-md-4">
 	  <div class="panel panel-primary" style="height: 220px;">
@@ -91,4 +109,5 @@
 
 </div>
   </div>
+
 </div>

@@ -25,7 +25,7 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        Você pode avalia-la uma vez, desde que esteja previsto a temporada de avaliações da instituição. 
+        Você pode avaliá-la uma vez, desde que esteja previsto a temporada de avaliações da instituição. 
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
     </div>
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
-        Não será necessário identifica-lo para responder o questionário.
+        Será necessário fornecer informações como RA, Curso, Nome Completo e seu email para acessar o sistema.
       </div>
     </div>
   </div>

@@ -1,8 +1,10 @@
-<?php include '../data/funcoes.php';
- //Abrir conexão com banco de dado.
- conecta();
+<?php 
+require_once ('../data/config.php');
+require_once ('../data/db.php');
+//Abrir conexão com banco de dado.
+$cnnPDO = new Db();
 
- //Ler dados dos raios selecionados,enviados pelo metodo post
+//Ler dados dos raios selecionados,enviados pelo metodo post
 $cont = $_POST['TQ'];
 $idpergunt = $_POST['idpergunta'];
 $idformular = $_POST['idformulario'];
@@ -51,7 +53,7 @@ for ($x = 1; $x <= $cont; $x++) {
 $sql = substr($sql, 0,strlen($sql)-1);
 
 //Salvar no banco de dados
-executar_sql($sql);
+$cnnPDO->Db()->exec($sql);
 
 //echo "<pre>";
 //print_r($sql);

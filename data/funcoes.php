@@ -10,9 +10,9 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
       function conecta(){
          $local  = 'localhost'; # localização do banco de dados
-         $banco  = 'u814586683_safir'; # nome do banco de dados
-         $usuario = 'u814586683_safir'; # nome de acesso ao banco de dados
-         $senha  = 'safir12345'; # senha de acesso ao banco de dados
+         $banco  = 'dbunip01_pro'; # nome do banco de dados
+         $usuario = 'userphp'; # nome de acesso ao banco de dados
+         $senha  = '12345'; # senha de acesso ao banco de dados      
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
          # 1º passo - Conectar ao banco de dados
          if (!($conexao = mysql_connect($local, $usuario, $senha))){

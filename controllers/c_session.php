@@ -2,27 +2,27 @@
 
 	if (isset($_POST['Submit']))
 	{
-		include 'data/funcoes.php';
-		//Abrir conex? com banco de dado.
-		conecta();
+            require_once ('data/config.php');
+            require_once ('data/db.php');
+                //Abrir conexão com banco de dado.
+                $cnnPDO = new Db();
 		
 		$usua_email	= $_POST["email"];
 		$usua_Senha	= md5($_POST["senha"]);
-
-		$rs = mysql_query("SELECT * FROM tb_usuario WHERE usua_email='$usua_email' AND usua_Senha='$usua_Senha'");
-		
-		$login_check = mysql_num_rows($rs);
-
+                $rs = $cnnPDO->Db()->query("SELECT * FROM tb_usuario WHERE usua_email='$usua_email' AND usua_Senha='$usua_Senha'");
+			
+		$login_check =  $rs->rowCount();
+                $row = $rs->fetchAll();
 		if ($login_check > 0)
 		{
-			$row = mysql_fetch_assoc($rs);
+			
 
-			if($row['usua_ativo']=='on'){
+			if($row[0]['usua_ativo']=='on'){
 				
-				$_SESSION['usuario_id'] = $row['usua_ID'];
-				$_SESSION['RA'] = $row['usua_RA'];
-				$_SESSION['nome'] = $row['usua_Nome'];
-				$_SESSION['email'] = $row['usua_email'];
+				$_SESSION['usuario_id'] = $row[0]['usua_ID'];
+				$_SESSION['RA'] = $row[0]['usua_RA'];
+				$_SESSION['nome'] = $row[0]['usua_Nome'];
+				$_SESSION['email'] = $row[0]['usua_email'];
 				$_SESSION['logado'] = '1';
 				
 			//$_SESSION['nivel_usuario'] = $row['nivel_usuario'];
@@ -34,9 +34,9 @@
 			else
 			{
 				//Dados para o reenvio do email
-				$_SESSION['nome'] = $row['usua_Nome'];
-				$_SESSION['email'] = $row['usua_email'];
-				$_SESSION['toke'] = $row['usua_tokenAtv'];
+				$_SESSION['nome'] = $row[0]['usua_Nome'];
+				$_SESSION['email'] = $row[0]['usua_email'];
+				$_SESSION['toke'] = $row[0]['usua_tokenAtv'];
 				
 			?>
 				<div class="container" style="margin-top: 30px;">
