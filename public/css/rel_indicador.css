@@ -1,0 +1,26 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "arial";
+}
+#rel{
+	width: 800px;
+	margin: 0 auto;
+	
+}
+table{
+	border: 1px solid;
+}
+header{
+	text-align: center;
+
+}
+#label{
+	text-align: center;
+}
+#obs{
+	border: 1px solid ;
+	padding: 20px;
+	margin-top: 10px;
+	text-align: center;
+}
