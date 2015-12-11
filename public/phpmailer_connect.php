@@ -26,8 +26,8 @@ $mail->WordWrap   = 50; // set word wrap
 
 $mail->MsgHTML($body);
 
-$mail->AddReplyTo("gceduvieira@gmail.com","No-Reply"); // e-Mail que envia a confirmação
-$mail->AddAddress("gceduvieira@gmail.com","mail"); // quem vai receber o e-Mail de confirmação
+$mail->AddReplyTo("appunipmanaus@gmail.com","No-Reply"); // e-Mail que envia a confirmação
+$mail->AddAddress("appunipmanaus@gmail.com","mail"); // quem vai receber o e-Mail de confirmação
 
 $mail->IsHTML(true); // Enviar o HTML
 
