@@ -15,6 +15,7 @@ if (!isset($_SESSION)) {
 <link rel="icon" href="public/imagens/favico.jpg">
 <link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="public/css/modificado.css">
+<link rel="stylesheet" type="text/css" href="public/css/bootstrap-theme.min.css">
 <!-- Custom styles for this template -->
 <link href="public/css/signin.css" rel="stylesheet">
 
