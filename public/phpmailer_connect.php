@@ -12,11 +12,11 @@ $body             = file_get_contents('contents.html'); //corpo do email
 $mail->IsSMTP();
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-$mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+$mail->Host       = "mx1.hostinger.com.br";      // SMTP server
 $mail->Port       = 587;                   // set the SMTP port
 
-$mail->Username   = "appunipmanaus@gmail.com";  // GMAIL username
-$mail->Password   = "33086914";            // GMAIL password
+$mail->Username   = "no-replay@safiraunip.hol.es";  // username appunipmanaus@gmail.com
+$mail->Password   = "8812661234EfS";            // password 33086914
 
 $mail->From       = "";
 $mail->FromName   = "Sistema UNIP";
@@ -26,8 +26,8 @@ $mail->WordWrap   = 50; // set word wrap
 
 $mail->MsgHTML($body);
 
-$mail->AddReplyTo("appunipmanaus@gmail.com","No-Reply"); // e-Mail que envia a confirmação
-$mail->AddAddress("appunipmanaus@gmail.com","mail"); // quem vai receber o e-Mail de confirmação
+$mail->AddReplyTo("no-replay@safiraunip.hol.es","No-Reply"); // e-Mail que envia a confirmação
+$mail->AddAddress("no-replay@safiraunip.hol.es","mail"); // quem vai receber o e-Mail de confirmação
 
 $mail->IsHTML(true); // Enviar o HTML
 
