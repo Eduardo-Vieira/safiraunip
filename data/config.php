@@ -10,7 +10,7 @@ Class Config {
         var $dbset ='mysql'; //banco que sera uando
         var $dns = array(
             'mysql'=>array(
-                'dns'=>'mysql:host=localhost;dbname=u814586683_safir',
+                'dns'=>'mysql:host=mysql.hostinger.com.br;dbname=u814586683_safir',
                 'User'=>'u814586683_safir',
                 'Senha'=>'mop5U9q36T' ),
             'mssql'=>array(
