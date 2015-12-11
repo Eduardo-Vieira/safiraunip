@@ -78,12 +78,13 @@ $(document).ready(function(){
         <div class="row">
          <div class="col-xs-6">
             <select class="form-control" name="curso">
+            <option value="0">Escolha...</option>
             <?php 
                $rs01 = $cnnPDO->Db()->query("SELECT `curs_cCurso`,`curs_Curso` FROM `tb_cursos`");
                $n_linhas = $rs01->rowCount();
                $row = $rs01->fetchAll();
                 for($i=0;$i <$n_linhas;$i++){
-                    echo '<option value="'.$row[$i][0].'" name="curso">'.utf8_encode($row[$i][1]).'</option>';
+                    echo '<option value="'.$row[$i][0].'" name="curso">'.$row[$i][1].'</option>';
                 }
             ?>               
             </select>           
