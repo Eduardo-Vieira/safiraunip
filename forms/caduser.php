@@ -107,7 +107,7 @@ $(document).ready(function(){
                $n_linhas = $rs02->rowCount();
                $row = $rs02->fetchAll();
                 for($i=0;$i <$n_linhas;$i++){
-                    echo '<option value="'.$row[$i][0].'" name="curso">'.utf8_encode($row[$i][1]).'</option>';
+                    echo '<option value="'.$row[$i][0].'" name="curso">'.$row[$i][1].'</option>';
                 }
                 ?>
             </select>
