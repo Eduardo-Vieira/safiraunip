@@ -49,7 +49,7 @@ $rs_turno = $cnnPDO->Db()->query($sql_turno)->fetchAll(PDO::FETCH_NUM);
     <option value="0">Escolha...</option>
         <?php
             for($i=0;$i<$cont;$i++){
-                echo '<option value="'.$rs[$i][0].'">'.utf8_encode($rs[$i][1]).'</option>';
+                echo '<option value="'.$rs[$i][0].'">'.$rs[$i][1].'</option>';
             }
         ?>      
     </select>
@@ -61,7 +61,7 @@ $rs_turno = $cnnPDO->Db()->query($sql_turno)->fetchAll(PDO::FETCH_NUM);
     <option value="0">Escolha...</option>
         <?php
             for($i=0;$i<$cont_turno;$i++){
-                echo '<option value="'.$rs_turno[$i][0].'">'.utf8_encode($rs_turno[$i][1]).'</option>';
+                echo '<option value="'.$rs_turno[$i][0].'">'.$rs_turno[$i][1].'</option>';
             }
         ?>      
     </select>
