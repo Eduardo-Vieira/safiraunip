@@ -1,14 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-      session_start();
-      if (!empty($_SESSION['logado']))
-        return header('location: inicio.php');
-      {
-        $_SESSION['logado'] = '0';
-        return header('location: index.php');
-
-      }
-    }
+if ($_SESSION['logado']=='0') 
+{
+    return header('location: index.php');
+}
 
 require_once ('data/config.php');
 require_once ('data/db.php');
@@ -56,7 +50,7 @@ DESTINADO AOS DIRETORES DE CAMPUS, CHEFIA DE CAMPUS, COORDENADORES DE CURSO – 
         <option value="0">Escolha...</option>
         <?php
             for($i=0;$i<$cont;$i++){
-                echo '<option value="'.$rs[$i][0].'">'.$rs[$i][1].'</option>';
+                echo '<option value="'.$rs[$i][0].'">'.utf8_encode($rs[$i][1]).'</option>';
             }
         ?>      
     </select>
@@ -69,7 +63,7 @@ DESTINADO AOS DIRETORES DE CAMPUS, CHEFIA DE CAMPUS, COORDENADORES DE CURSO – 
         <option value="0">Escolha...</option>
         <?php
             for($i=0;$i<$cont_turno;$i++){
-                echo '<option value="'.$rs_turno[$i][0].'">'.$rs_turno[$i][1].'</option>';
+                echo '<option value="'.$rs_turno[$i][0].'">'.utf8_encode($rs_turno[$i][1]).'</option>';
             }
         ?>      
     </select>

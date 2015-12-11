@@ -1,16 +1,10 @@
 <?php
-if (!isset($_SESSION)) {
-      session_start();
-      if (!empty($_SESSION['logado']))
-        return header('location: ../index.php');
-      {
-        $_SESSION['logado'] = '0';
-        return header('location: ../index.php');
+if ($_SESSION['logado']=='0') 
+{
+    return header('location: index.php');
+}
 
-      }
-    }
-
-    require_once ('data/config.php');
+require_once ('data/config.php');
 require_once ('data/db.php');
 
 //Abrir conexão com banco de dado.
