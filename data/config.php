@@ -10,9 +10,9 @@ Class Config {
         var $dbset ='mysql'; //banco que sera uando
         var $dns = array(
             'mysql'=>array(
-                'dns'=>'mysql:host=localhost;dbname=dbunip01_pro',
-                'User'=>'userphp',
-                'Senha'=>'12345' ),
+                'dns'=>'mysql:host=localhost;dbname=u814586683_safir',
+                'User'=>'u814586683_safir',
+                'Senha'=>'mop5U9q36T' ),
             'mssql'=>array(
                  'dns'=>'"mssql:host=localhost;dbname=db_framework',
                  'User'=>'usuario',
