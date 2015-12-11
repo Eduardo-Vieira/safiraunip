@@ -15,8 +15,8 @@ $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
 $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
 $mail->Port       = 465;                   // set the SMTP port
 
-$mail->Username   = "gceduvieira@gmail.com";  // GMAIL username
-$mail->Password   = "edu@31416";            // GMAIL password
+$mail->Username   = "appunipmanaus@gmail.com";  // GMAIL username
+$mail->Password   = "33086914";            // GMAIL password
 
 $mail->From       = "";
 $mail->FromName   = "Sistema UNIP";

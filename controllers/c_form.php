@@ -5,9 +5,11 @@ require_once ('../data/db.php');
 $cnnPDO = new Db();
 
 //Ler dados dos raios selecionados,enviados pelo metodo post
-$cont = $_POST['TQ'];
-$idpergunt = $_POST['idpergunta'];
-$idformular = $_POST['idformulario'];
+$cont = (int) $_POST['TQ'];
+$idpergunt = (int) $_POST['idpergunta'];
+$idformular = (int) $_POST['idformulario'];
+$idCurso =  (int) $_POST['idCurso'];
+$idTurno = (int) $_POST['idTurno'];
 
 // gera token rondo
 $token = md5(time());
@@ -20,14 +22,14 @@ for ($i = 1; $i <= $cont; $i++) {
 	//echo "volta ".$i;
 	
 	if (!isset($_POST['Q'.$i])) {
-    	//echo "Essa não Foi respondida.";
-    	$idrespota[$i] =$_POST['iddefull'];
-    	$log = $log . "Questão ".$i. " Não Respondida Marcado como defull;";
+            //echo "Essa não Foi respondida.";
+            $idrespota[$i] =$_POST['iddefull'];
+            $log = $log . "Questão ".$i. " Não Respondida Marcado como defull;";
 	} 	
 	else 
 	{
-		//echo "Essa Foi respondida.";
-		$idrespota[$i] = $_POST['Q'.$i];
+            //echo "Essa Foi respondida.";
+            $idrespota[$i] = $_POST['Q'.$i];
 	}
 }
 
@@ -42,10 +44,10 @@ $log = "Todas Respondidas;" .$token;
 
 
 
-$sql ="INSERT INTO `tb_resultados` (`resu_form_codid`,`resu_token`,`resu_resp_codid`,`resu_perg_codid`) VALUES ";
+$sql ="INSERT INTO `tb_resultados` (`resu_form_codid`,`resu_token`,`resu_resp_codid`,`resu_perg_codid`,`resu_cCurso`,`resu_cTurno`) VALUES ";
 
 for ($x = 1; $x <= $cont; $x++) { 
-	$sql .= "('".$idformular."','".$token."','".$idrespota[$x]."','".$idpergunt."'),";
+	$sql .= "('".$idformular."','".$token."','".$idrespota[$x]."','".$idpergunt."','".$idCurso."','".$idTurno."'),";
 	$idpergunt++;
 } 
 
@@ -57,7 +59,6 @@ $cnnPDO->Db()->exec($sql);
 
 //echo "<pre>";
 //print_r($sql);
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">

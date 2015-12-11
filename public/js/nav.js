@@ -9,7 +9,17 @@ var sub ='1';
   $(document).ready(function(){
         
         $( "#enviar" ).click(function() {
-          $( "#formq" ).submit();
+          if($("#idCurso").val()=='0'){
+                alert('Selecione um Curso');
+                
+            }else{
+                if($("#idTurno").val()=='0'){
+                    alert('Selecione um Turno');
+                }else{
+                    //Submit
+                    $( "#formq" ).submit();
+                }
+            }
         });
 
         $('#next1').click(function(){

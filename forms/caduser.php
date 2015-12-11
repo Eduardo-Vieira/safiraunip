@@ -3,7 +3,7 @@
 
 <script type="text/javascript" src="public/js/jquery.js" ></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function(){
     $("input").blur(function(){
      if($(this).val() == "")
@@ -28,28 +28,30 @@ $(document).ready(function(){
 });
 </script>
 
+-->
+
 <script type="text/javascript"> 
     
     $(document).ready(function(){
           $("#aluno").click(function(){
             //mostra div
-            $('#fcurso').show();
+            $('#ccurso').show();
           });
           $("#coordenadores").click(function(){
             //oculta div
-            $('#fcurso').hide();   
+            $('#ccurso').hide();   
           });
             $('#egressos').click(function(){
             //oculta div
-            $('#fcurso').hide();    
+            $('#ccurso').hide();    
           });
              $('#civil').click(function(){
             //oculta div
-            $('#fcurso').hide();    
+            $('#ccurso').hide();    
           });
              $('#administrativo').click(function(){
             //oculta div
-            $('#fcurso').hide();    
+            $('#ccurso').hide();    
           });
      });
      
@@ -62,12 +64,12 @@ $(document).ready(function(){
     <div class="control-group">
 
         <div class="controls">
-        <label  class="checkbox-inline">
-        <label><input type="radio" id="coordenadores" name="tipo" value="1">Coordenadores</label>
-        <label><input type="radio" id="egressos" name="tipo" value="2">Egressos</label>
-        <label><input type="radio" id="aluno" name="tipo" value="3" checked="">Aluno</label>
-        <label><input type="radio" id="civil" name="tipo" value="4">Sociedade Civil</label>
-        <label><input type="radio" id="administrativo" name="tipo" value="5">Administrativo</label>
+        <label  class="checkbox-inline" name="nivel">
+        <label><input type="radio" id="coordenadores" name="nivel" value="1">Coordenadores</label>
+        <label><input type="radio" id="egressos" name="nivel" value="2">Egressos</label>
+        <label><input type="radio" id="aluno" name="nivel" value="3" checked="">Aluno</label>
+        <label><input type="radio" id="civil" name="nivel" value="4">Sociedade Civil</label>
+        <label><input type="radio" id="administrativo" name="nivel" value="5">Administrativo</label>
         </label>
         </div>
 
@@ -76,63 +78,40 @@ $(document).ready(function(){
         <div class="row">
          <div class="col-xs-6">
             <select class="form-control" name="curso">
-                <option value="1" name="curso">Administração</option>
-                <option value="2" name="curso">Arquitetura e Urbanismo</option>
-                <option value="3" name="curso">Biomedicina</option>
-                <option value="4" name="curso">Ciências Atuariais</option>
-                <option value="5" name="curso">Ciências Biológicas</option>
-                <option value="6" name="curso">Ciências Contábeis</option>
-                <option value="7" name="curso">Ciência da Computação</option>
-                <option value="8" name="curso">Ciências Econômicas</option>
-                <option value="9" name="curso">Desenho Industrial</option>
-                <option value="10" name="curso">Direito</option>
-                <option value="11" name="curso">Educação Física</option>
-                <option value="12" name="curso">Enfermagem</option>
-                <option value="13" name="curso">Engenharia Aeronáutica</option>
-                <option value="14" name="curso">Engenharia Ambiental</option>
-                <option value="15" name="curso">Engenharia Civil</option>
-                <option value="16" name="curso">Engenharia de Computação</option>
-                <option value="17" name="curso">Engenharia de Controle e Automação</option>
-                <option value="18" name="curso">Engenharia de Petróleo</option>
-                <option value="19" name="curso">Engenharia de Produção Mecânica</option>
-                <option value="20" name="curso">Engenharia Elétrica</option>
-                <option value="21" name="curso">Engenharia Mecânica</option>
-                <option value="22" name="curso">Farmácia</option>
-                <option value="23" name="curso">Física</option>
-                <option value="24" name="curso">Fisioterapia</option>
-                <option value="25" name="curso">Fonoaudiologia</option>
-                <option value="26" name="curso">Geografia</option>
-                <option value="27" name="curso">História</option>
-                <option value="28" name="curso">Hotelaria</option>
-                <option value="29" name="curso">Jornalismo</option>
-                <option value="30" name="curso">Letras</option>
-                <option value="31" name="curso">Matemática</option>
-                <option value="32" name="curso">Medicina Veterinária</option>
-                <option value="33" name="curso">Moda</option>
-                <option value="34" name="curso">Nutrição</option>
-                <option value="35" name="curso">Odontologia</option>
-                <option value="36" name="curso">Pedagogia</option>
-                <option value="37" name="curso">Propaganda e Marketing</option>
-                <option value="38" name="curso">Psicologia</option>
-                <option value="39" name="curso">Publicidade e Propaganda</option>
-                <option value="40" name="curso">Química</option>
-                <option value="41" name="curso">Relações Internacionais</option>
-                <option value="42" name="curso">Secretariado Executivo Bilíngue</option>
-                <option value="43" name="curso">Serviço Social</option>
-                <option value="44" name="curso">Sistemas de Informação</option>
-                <option value="45" name="curso">Terapia Ocupacional</option>
-                <option value="46" name="curso">Turismo</option>
-                <option value="47" name="curso">Zootecnia</option>
-            </select>             
+            <?php 
+               $rs01 = $cnnPDO->Db()->query("SELECT `curs_cCurso`,`curs_Curso` FROM `tb_cursos`");
+               $n_linhas = $rs01->rowCount();
+               $row = $rs01->fetchAll();
+                for($i=0;$i <$n_linhas;$i++){
+                    echo '<option value="'.$row[$i][0].'" name="curso">'.utf8_encode($row[$i][1]).'</option>';
+                }
+            ?>               
+            </select>           
         </div>
 
          <div class="col-xs-4">
-            <select class="form-control">
-                <option value="manha" name="turno">Manhã</option>
-                <option value="noite" name="turno">Noite</option>
+             <select class="form-control" name="turno">
+                <option value="1" name="turno">Manhã</option>
+                <option value="2" name="turno">Noite</option>
             </select>
         </div>
         </div>
+        </div>
+        
+        <label for="RA">Localidade<font color="red">*</font></label>
+        <div class="controls">
+            <select class="form-control" name="cidade">
+                <option value="0">Escolha...</option>
+                <?php 
+               $rs02 = $cnnPDO->Db()->query("SELECT `cida_cCidade`,`cida_Cidade` FROM `tb_cidades`");
+               $n_linhas = $rs02->rowCount();
+               $row = $rs02->fetchAll();
+                for($i=0;$i <$n_linhas;$i++){
+                    echo '<option value="'.$row[$i][0].'" name="curso">'.utf8_encode($row[$i][1]).'</option>';
+                }
+                ?>
+            </select>
+            <span class="field-validation-valid" data-valmsg-for="RA" data-valmsg-replace="true"></span>
         </div>
 
         <label for="RA">RA <font color="red">*</font></label>

@@ -11,14 +11,17 @@ if (!isset($_SESSION)) {
     }
 ?>
 
+
+
 <div class="page-header">
     <h2>Seja bem vindo, <?php echo strtoupper($_SESSION['nome']);?>.</h2>
 </div>
 <!-- linha 01 -->
 <div class="row">
 	<?php
-		
+	
 	?>
+
 	 <!-- Coluna 01 -->
   <div class="col-sm-6 col-md-4">
 	  <div class="panel panel-primary" style="height: 220px;">
@@ -111,3 +114,5 @@ if (!isset($_SESSION)) {
   </div>
 
 </div>
+
+    ?>

@@ -9,6 +9,22 @@ if (!isset($_SESSION)) {
 
       }
     }
+
+require_once ('data/config.php');
+require_once ('data/db.php');
+
+//Abrir conexão com banco de dado.
+$cnnPDO = new Db();
+$sql ="SELECT `curs_cCurso`,`curs_Curso` FROM `tb_cursos`";
+
+$cont =$cnnPDO->Db()->query($sql)->rowCount();
+$rs = $cnnPDO->Db()->query($sql)->fetchAll(PDO::FETCH_NUM);
+
+$sql_turno ="SELECT `turn_cTurno`,`turn_txTurno` FROM `tb_turno`";
+
+$cont_turno =$cnnPDO->Db()->query($sql_turno)->rowCount();
+$rs_turno = $cnnPDO->Db()->query($sql_turno)->fetchAll(PDO::FETCH_NUM);
+
 ?>
 
 <form action="controllers/c_form.php" method="post"  id="formq" name="formq">
@@ -24,6 +40,7 @@ if (!isset($_SESSION)) {
         <p><b> 02 - QUESTIONÁRIO DE AVALIAÇÃO INSTITUCIONAL INTERNA DESTINADO AO CORPO DISCENTE E AOS EGRESSOS - 2015</b></p>
     </div>
   </div>
+
       <div>
       <div id="subtitulo1" name="subtitulo1"><p><b>Eixo 1 – Dimenssão 8 (Planejamento e Avaliação Institucional)</b></p></div>
       <div id="subtitulo2" name="subtitulo2"><p><b>Eixo 2 – Dimensões 1 e 3 (Desenvolvimento Institucional)</b></p></div>
@@ -31,6 +48,32 @@ if (!isset($_SESSION)) {
       <div id="subtitulo4" name="subtitulo4"><p><b>Eixo 4 – Dimensões 5, 6 e 10 (Política de Gestão, Organização e Gestão Institucional e Sustentabilidade Financeira)</b></p></div>
       <div id="subtitulo5" name="subtitulo5"><p><b>Eixo 5 – Dimensão 5 (Infraestrutura)</b></p></div>
     </div>
+
+    <div class="form-group">
+    <label for="InputCurso">Curso </label>
+    <select name ="idCurso" id = "idCurso">
+    <option value="0">Escolha...</option>
+        <?php
+            for($i=0;$i<$cont;$i++){
+                echo '<option value="'.$rs[$i][0].'">'.utf8_encode($rs[$i][1]).'</option>';
+            }
+        ?>      
+    </select>
+    </div>
+    
+    <div class="form-group">
+    <label for="InputTurno">Turno </label>
+    <select name = "idTurno" id = "idTurno">
+    <option value="0">Escolha...</option>
+        <?php
+            for($i=0;$i<$cont_turno;$i++){
+                echo '<option value="'.$rs_turno[$i][0].'">'.utf8_encode($rs_turno[$i][1]).'</option>';
+            }
+        ?>      
+    </select>
+    </div>
+
+
     <div class="panel panel-default" id="1">
           <div class="panel-heading">1. A avaliação institucional interna é importante, porque aponta potencialidades, fragilidades e ações corretivas para 
           							atender ao que estabelece o PDI.</div>

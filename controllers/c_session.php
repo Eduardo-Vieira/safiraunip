@@ -24,8 +24,9 @@
 				$_SESSION['nome'] = $row[0]['usua_Nome'];
 				$_SESSION['email'] = $row[0]['usua_email'];
 				$_SESSION['logado'] = '1';
+				$_SESSION['nivel'] = $row['usua_cNivel'];
 				
-			//$_SESSION['nivel_usuario'] = $row['nivel_usuario'];
+		
 		    //$sql ="UPDATE tb_usuario SET data_ultimo_login = now() WHERE usuario_id ='{$usuario_id}'"
 			//executar_sql($sql)
 

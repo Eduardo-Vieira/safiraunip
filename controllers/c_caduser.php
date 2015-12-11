@@ -1,17 +1,24 @@
 <?php
+    require_once ('data/config.php');	
+    require_once ('data/db.php');
+    //Abrir conexão com banco de dado.
+    $cnnPDO = new Db();
+        
 //Verificar se foi feito um post.
 if (isset($_POST['bntSalvar'])) {
-	require_once ('data/db.php');
-	//Abrir conexão com banco de dado.
-	$cnnPDO = new Db();
-        
+            
         //Receber o Post do formul?io
 	 $usua_RA	= $_POST["ra"];
 	 $usua_Nome	= $_POST["nome"];
 	 $usua_Senha	= md5($_POST["senha"]);
 	 $usua_email	= $_POST["email"];
+	 $usua_cNivel	= $_POST["nivel"];
+	 $usua_cCurso	= $_POST["curso"];
+	 $usua_cTurno	= $_POST["turno"];
+         $usua_cCidade  = $_POST["cidade"];
+         
      // gera token rondo
-	 $token = md5(date("Y/m/d H:i:s"));
+     $token = md5(date("Y/m/d H:i:s"));
 	 // Iniciar messagem de erro
 	 $msg = 0;
 	 
@@ -29,14 +36,15 @@ if (isset($_POST['bntSalvar'])) {
        exit;
     }
 
-	 $sql ="INSERT INTO tb_usuario(usua_RA, usua_Nome, usua_Senha, usua_email, usua_ativo, usua_tokenAtv) VALUE ";
-	 $sql .="('".$usua_RA."','".$usua_Nome."','".$usua_Senha."','".$usua_email."', 'off','".$token."')";
+	 $sql ="INSERT INTO tb_usuario(usua_RA, usua_Nome, usua_Senha, usua_email, usua_ativo, usua_tokenAtv, usua_cNivel, usua_cCurso, usua_cTurno, usua_cCidade) VALUE ";
+	 $sql .="('".$usua_RA."','".$usua_Nome."','".$usua_Senha."','".$usua_email."', 'off','".$token."','".$usua_cNivel."','".$usua_cCurso."','".$usua_cTurno."','".$usua_cCidade."')";
 
 	 $rs = $cnnPDO->Db()->query("SELECT * FROM tb_usuario");
          $n_linhas = $rs->rowCount();
+         $row = $rs->fetchAll();
          for($i=0;$i <$n_linhas;$i++){
             //Verificar se ja exite na tabela o RA e E-mail
-             if($rs[$i]['usua_RA']== $usua_RA ||$rs[$i]['usua_email']== $usua_email){
+             if($row[$i]['usua_RA']== $usua_RA ||$row[$i]['usua_email']== $usua_email){
               $msg = 1;   
              }
          }
@@ -59,7 +67,7 @@ if (isset($_POST['bntSalvar'])) {
 	$cnnPDO->Db()->exec($sql);
        
 
-	include 'controllers/c_mail.php';
+	//include 'controllers/c_mail.php';
 
 ?>
 	<div class="container" style="margin-top: 30px;">

@@ -9,6 +9,22 @@ if (!isset($_SESSION)) {
 
       }
     }
+
+require_once ('data/config.php');
+require_once ('data/db.php');
+
+//Abrir conexão com banco de dado.
+$cnnPDO = new Db();
+$sql ="SELECT `curs_cCurso`,`curs_Curso` FROM `tb_cursos`";
+
+$cont =$cnnPDO->Db()->query($sql)->rowCount();
+$rs = $cnnPDO->Db()->query($sql)->fetchAll(PDO::FETCH_NUM);
+
+$sql_turno ="SELECT `turn_cTurno`,`turn_txTurno` FROM `tb_turno`";
+
+$cont_turno =$cnnPDO->Db()->query($sql_turno)->rowCount();
+$rs_turno = $cnnPDO->Db()->query($sql_turno)->fetchAll(PDO::FETCH_NUM);
+
 ?>
 
 <form action="controllers/c_form.php" method="post"  id="formq" name="formq">
@@ -34,6 +50,31 @@ DESTINADO AOS DIRETORES DE CAMPUS, CHEFIA DE CAMPUS, COORDENADORES DE CURSO – 
       <div id="subtitulo5" name="subtitulo5"><p><b>Eixo 5 – Dimensão 5 (Infraestrutura)</b></p></div>
     </div>
     -->
+    <div class="form-group">
+    <label for="InputCurso">Curso </label>
+    <select name="idCurso" id="idCurso">
+        <option value="0">Escolha...</option>
+        <?php
+            for($i=0;$i<$cont;$i++){
+                echo '<option value="'.$rs[$i][0].'">'.utf8_encode($rs[$i][1]).'</option>';
+            }
+        ?>      
+    </select>
+    
+    </div>
+    
+    <div class="form-group">
+    <label for="InputTurno">Turno </label>
+    <select name="idTurno" id="idTurno">
+        <option value="0">Escolha...</option>
+        <?php
+            for($i=0;$i<$cont_turno;$i++){
+                echo '<option value="'.$rs_turno[$i][0].'">'.utf8_encode($rs_turno[$i][1]).'</option>';
+            }
+        ?>      
+    </select>
+    
+    </div>
     <div class="panel panel-default" id="1">
           <div class="panel-heading">1. Missão Institucional – Visão – Valores: Sua clareza, objetividade, coerência, adequação entre todos os seus elementos e com a realidade institucional, a factibilidade e a viabilidade do seu cumprimento integral.</div>
           <div class="panel-body">

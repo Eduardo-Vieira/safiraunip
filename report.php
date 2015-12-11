@@ -34,13 +34,9 @@ $i = '0';  //inteiro pra loop
 <div id="rel">
 <P><B>RELATÓRIO DE AVALIAÇÃO INSTITUCIONAL INTERNA</P>
 <P>Campus <?php echo($campus)?></P>
-<BR>
-<BR>
 <P>2014</P>
 <P>ANÁLISE QUANTITATIVA</P>
 <P>DISCENTES</P>
-<BR>
-<BR>
 <P>Questionário CPA - Discentes</P>
 
 <TABLE BORDER="1" width = "100%"> 
@@ -98,12 +94,11 @@ $i = '0';  //inteiro pra loop
 
 		$row = mysql_fetch_assoc($rst);
 	}
+        
+$rs01 = mysql_query("SELECT * FROM tb_perguntas WHERE perg_form_codid='1' "); 
+while ($row = mysql_fetch_row($rs01)) {
+
 ?>
-
-
-
-
-for ()
 <div id="tabelapergunt">
 	<P align="left"> <?php echo ($perg_descarray[0]); ?> </P>
 
@@ -123,15 +118,13 @@ for ()
 			<TD rowspan="3"><?php echo($potencialidade);?>%</TD>
 		</TR>
 
-		<?php $i = $i + '1';?>
-
 		<TR> 
 			<TD align = "left">Otimo</TD>
 			<TD><?php echo round($pergquant[$i]/($totalperg / 100),2);?>%</TD>
 			<TD><?php echo($pergquant[$i]);?></TD>
 		</TR>
 
-		<?php $i = $i + '1';?>
+		
 
 		<TR> 
 			<TD align = "left">Regular</TD>
@@ -139,7 +132,6 @@ for ()
 			<TD><?php echo($pergquant[$i]);?></TD>
 		</TR>
 
-		<?php $i = $i + '1';?>
 
 		<TR> 
 			<TD align = "left">Ruim</TD>
@@ -148,7 +140,6 @@ for ()
 			<TD rowspan="3"> POTENCIALIDADE</TD>
 		</TR>
 
-		<?php $i = $i + '1';?>
 
 		<TR> 
 			<TD align = "left">Nãoconheço para opinar</TD>
@@ -166,17 +157,8 @@ for ()
 	<BR>
  </div>
 
-<?php $i = '0'; ?>
-
-
-
-
-
 <?php
-$rs01 = mysql_query("SELECT * FROM tb_perguntas WHERE perg_form_codid='1' "); 
-while ($row = mysql_fetch_row($rs01)) {
-
-	echo $row[0].'  '.$row[1].'  '.$row[2].'<br>';
+    echo utf8_encode($row[0]).'  '.utf8_encode($row[1]).'  '.utf8_encode($row[2]).'<br>';
 	
 }
 
