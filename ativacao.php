@@ -1,13 +1,12 @@
 <?php
 	$r = $_REQUEST['r'];
 
-	include 'data/funcoes.php';
-	//Abrir conex? com banco de dado.
-	conecta();
-
-	$sql = "UPDATE `tb_usuario` SET `usua_ativo`='on' WHERE `usua_tokenAtv`='".$r."'";
-	
-	executar_sql($sql);
+    require_once ('data/config.php');	
+    require_once ('data/db.php');
+    //Abrir conexão com banco de dado.
+    $cnnPDO = new Db();
+    $sql = "UPDATE `tb_usuario` SET `usua_ativo`='on' WHERE `usua_tokenAtv`='".$r."'";
+    $rs = $cnnPDO->Db()->exec($sql);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
