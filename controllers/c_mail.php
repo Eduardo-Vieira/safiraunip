@@ -2,9 +2,9 @@
 $body             = '
 <body>
 	<div style="margin: 0 auto; width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
-		<h1>Ol� '.strtoupper($usua_Nome).'</h1>
-		<p>A UNIP agradece o seu cadastro no site de avalia��o</p>
-		<p>Click no link para ir at� o site <a href="localhost/projetounip/ativacao.php?r='.$token.'">Ativa��o UNIP</a></p>
+		<h1>Olá '.strtoupper($usua_Nome).'</h1>
+		<p>A UNIP agradece o seu cadastro no site de avaliação</p>
+		<p>Click no link para ir até o site <a href="localhost/projetounip/ativacao.php?r='.$token.'">Ativação UNIP</a></p>
 	</div>
 </body>
 ';
