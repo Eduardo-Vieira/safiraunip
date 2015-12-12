@@ -8,9 +8,12 @@ $body             = '
 	</div>
 </body>
 ';
+// To send HTML mail, the Content-type header must be set
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
 // In case any of our lines are larger than 70 characters, we should use wordwrap()
 $body = wordwrap($body, 50);
 
 // Send
-mail($usua_email, 'Confirmação de Cadastro UNIP', $body);
+mail($usua_email, 'Confirmação de Cadastro UNIP', $body,$headers );
